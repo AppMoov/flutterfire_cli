@@ -23,6 +23,9 @@ To set up and use this CLI repo locally for the purposes of contributing, clone 
 # Activate CLI from path:
 dart pub global activate --source="path" . --executable="flutterfire" --overwrite
 
+#Activate CLI from repo:
+dart pub global activate --source git https://github.com/AppMoov/flutterfire_cli.git --git-path packages/flutterfire_cli  --executable="flutterfire" --overwrite
+
 # Confirm you now using a local development version:
 flutterfire --help
 # You should now see a banner printed at the top of the help output similar to:
