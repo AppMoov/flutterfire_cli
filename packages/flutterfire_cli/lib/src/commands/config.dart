@@ -20,7 +20,6 @@ import 'dart:io';
 import 'package:ansi_styles/ansi_styles.dart';
 import 'package:path/path.dart' as path;
 
-import './reconfigure.dart';
 import '../common/inputs.dart';
 import '../common/platform.dart';
 import '../common/strings.dart';
@@ -33,6 +32,7 @@ import '../firebase/firebase_dart_configuration_write.dart';
 import '../firebase/firebase_platform_options.dart';
 import '../firebase/firebase_project.dart';
 import '../flutter_app.dart';
+import './reconfigure.dart';
 import 'base.dart';
 
 class ConfigCommand extends FlutterFireCommand {
@@ -314,45 +314,15 @@ class ConfigCommand extends FlutterFireCommand {
   }
 
   String? get webAppId {
-    final value = argResults!['web-app-id'] as String?;
-
-    if (value != null) return value;
-
-    if (isCI) {
-      throw FirebaseCommandException(
-        'configure',
-        'Please provide value for web-app-id.',
-      );
-    }
-    return null;
+    return argResults!['web-app-id'] as String?;
   }
 
   String? get windowsAppId {
-    final value = argResults![kWindowsAppIdFlag] as String?;
-
-    if (value != null) return value;
-
-    if (isCI) {
-      throw FirebaseCommandException(
-        'configure',
-        'Please provide value for $kWindowsAppIdFlag.',
-      );
-    }
-    return null;
+    return argResults![kWindowsAppIdFlag] as String?;
   }
 
   String? get macosBundleId {
-    final value = argResults!['macos-bundle-id'] as String?;
-    // TODO validate bundleId is valid if provided
-    if (value != null) return value;
-
-    if (isCI) {
-      throw FirebaseCommandException(
-        'configure',
-        'Please provide value for macos-bundle-id.',
-      );
-    }
-    return null;
+    return argResults!['macos-bundle-id'] as String?;
   }
 
   String? get token {
